@@ -29,7 +29,6 @@ BSC_COMP = bsc
 toplevel_module = mkTH
 
 plbdir = ../PLBMaster
-bramdir = ../../../lib/bsv/
 feederdir = ../../../lib/bsv/BRAMFeeder/src
 debugdir = ../../../lib/bsv/Debug/
 sortdir = ../../sort
@@ -73,7 +72,7 @@ external_memory_tester_verilog:
 	$(BSC_COMP) $(VER_OPTS) -bdir ./ -p +:$(commondir):$(plbdir):$(feederdir):$(commondir):$(memo_common_dir):$(external_memory_dir):$(debugdir):$(bramdir):$(bram_blue_target_dir) -g mkExternalMemoryTester $(external_memory_dir)/ExternalMemoryTester.bsv > out.log
 
 top_verilog:
-	$(BSC_COMP) $(VER_OPTS) -dschedule  -D LogArrayLen=18 -bdir ./ -p +:$(plbdir):$(feederdir):$(commondir):$(memo_common_dir):$(external_memory_dir):$(debugdir):$(sortdir):$(ctrldir):$(bramdir):$(aes_bsv_dir):$(bram_blue_target_dir):$(bram_fifo_ver_dir):$(bram_fifo_dir) -g mkSorter $(top_dir)/Sorter.bsv > out.log
+	$(BSC_COMP) $(VER_OPTS) -dschedule  -D LogArrayLen=18 -bdir ./ -p +:$(plbdir):$(feederdir):$(commondir):$(memo_common_dir):$(external_memory_dir):$(debugdir):$(sortdir):$(ctrldir):$(aes_bsv_dir):$(bram_blue_target_dir):$(bram_fifo_ver_dir):$(bram_fifo_dir) -g mkSorter $(top_dir)/Sorter.bsv > out.log
 
 aes_tester_verilog:
 	$(BSC_COMP) $(VER_OPTS) -bdir ./ -p +:$(plbdir):$(feederdir):$(commondir):$(memo_common_dir):$(debugdir):$(external_memory_dir):$(sortdir):$(ctrldir):$(bramdir):$(aes_bsv_dir):$(debugdir):$(bram_blue_target_dir):$(bram_fifo_ver_dir):$(bram_fifo_dir) -g mkAESTester $(aes_test)/AESTester.bsv > out.log
